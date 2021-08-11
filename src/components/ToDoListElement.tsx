@@ -1,28 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-interface Props {
+type Props = {
     text: string,
     remove(text: string): void
 }
 
-export const ToDoListElement = (props: Props) => {
-
-    const remove = () => {
-        props.remove(props.text)
-    }
-
-    return(
-        <Wrapper>
-            <ToDoText>
-                {props.text}
-            </ToDoText>
-            <RemoveButton onClick={remove}>
-                —
-            </RemoveButton>
-        </Wrapper>
-    )
-}
+export const ToDoListElement = (props: Props) => (
+    <Wrapper>
+        <ToDoText>
+            {props.text}
+        </ToDoText>
+        <RemoveButton onClick={() => props.remove(props.text)}>
+            —
+        </RemoveButton>
+    </Wrapper>
+)
 
 const Wrapper = styled.li`
   background-color: darkslategrey;
@@ -53,7 +46,7 @@ const RemoveButton = styled.button`
   color: darkslategrey;
   border-radius: 50px;
   padding: 5px;
-  :hover{
+  :hover {
     cursor: pointer;
     background-color: darkslategrey;
     color: white;

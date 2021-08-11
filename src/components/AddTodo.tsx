@@ -1,33 +1,29 @@
-import React, { FormEvent, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
-interface Props {
+type Props = {
     newToDo(text: string): void
 }
 
 export const AddTodo = (props: Props) => {
-
     const [currentState, setState] = useState<string>('')
 
-    const handleSubmit = (event: FormEvent) => {
+    const handleSubmit = () => {
         if (currentState !== '') {
-            event.preventDefault()
             props.newToDo(currentState)
-            setState(() => '')
+            setState('')
         }
     }
 
     return(
         <Wrapper>
-            <div>
-                <input
-                    value={currentState}
-                    onChange={event => setState(event.target.value)}
-                />
-                <Button onClick={handleSubmit}>
-                    +
-                </Button>
-            </div>
+            <input
+                value={currentState}
+                onChange={event => setState(event.target.value)}
+            />
+            <Button onClick={handleSubmit}>
+                +
+            </Button>
         </Wrapper>
     )
 }
@@ -40,7 +36,7 @@ const Wrapper = styled.div`
   padding: 10px;
   display: flex;
   justify-content: center;
-  input{
+  input {
     background-color:  #88cdc9;
     font-size: large;
     font-family: "Comic Sans MS";
@@ -52,7 +48,7 @@ const Button = styled.button`
   font-size: x-large;
   background-color: white;
   border-radius: 12px;
-  :hover{
+  :hover {
     cursor: pointer;
     background-color: darkslategrey;
     color: white;

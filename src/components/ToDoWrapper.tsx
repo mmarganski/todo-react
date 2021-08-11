@@ -4,11 +4,9 @@ import { AddTodo } from './AddTodo'
 import { ToDoListElement } from './ToDoListElement'
 
 export const ToDoWrapper = () => {
-
-    const[currentState, setState] = useState<Array<string>>([])
+    const [currentState, setState] = useState<Array<string>>([])
 
     const addToDo = (text: string) => {
-
         if (!currentState.includes(text)) {
             setState(prevState => prevState.concat(text))
         }
