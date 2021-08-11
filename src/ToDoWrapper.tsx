@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { AddTodo } from './AddTodo'
 import styled from 'styled-components'
+import { AddTodo } from './AddTodo'
 import { ToDoListElement } from './ToDoListElement'
 
 export const ToDoWrapper = () => {
